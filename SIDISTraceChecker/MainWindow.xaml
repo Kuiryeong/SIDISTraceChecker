@@ -1,0 +1,24 @@
+﻿<Window x:Class="SIDISTraceChecker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vms="clr-namespace:SIDISTraceChecker.ViewModels"
+        xmlns:views="clr-namespace:SIDISTraceChecker.Views"
+        xmlns:local="clr-namespace:SIDISTraceChecker"
+        mc:Ignorable="d"
+        Title="SIDISTraceChecker" Height="720" Width="1280">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vms:TraceFileViewModel}">
+            <views:TraceFileView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:TraceDetailViewModel}">
+            <views:TraceDetailView/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+    </Grid>
+    
+</Window>

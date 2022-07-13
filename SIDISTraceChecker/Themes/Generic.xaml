@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:SIDISTraceChecker.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/SIDISTraceChecker;component/Controls/LoadingSponnerContol.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SIDISTraceChecker;component/Controls/CustomTextBlockControl.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

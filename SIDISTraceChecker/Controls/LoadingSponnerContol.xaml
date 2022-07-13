@@ -1,0 +1,127 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SIDISTraceChecker.Controls"
+                    xmlns:converters="clr-namespace:SIDISTraceChecker.Converters">
+    
+    <Style TargetType="{x:Type local:LoadingSpinner}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:LoadingSpinner}">
+                    <ControlTemplate.Resources>
+                        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                        <converters:CirCleStrokConverter x:Key="CircleStrokConverter" />
+                        <converters:DiameterConverter x:Key="DiameterConverter" />
+                        <converters:ThicknessConverter x:Key="ThicknessConverter" />
+                    </ControlTemplate.Resources>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        
+                        <TextBlock Foreground="DarkSlateBlue" Text="Loading..." VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        
+                        <!--First circle-->
+                        <Ellipse x:Name="firstCircle"
+                        Width="{TemplateBinding Diameter}"
+                        Height="{TemplateBinding Diameter}"
+                        RenderTransformOrigin="0.5 0.5"
+                        Stroke="{TemplateBinding Color}"
+                        StrokeDashCap="{TemplateBinding Cap}"
+                        StrokeThickness="{TemplateBinding Thickness}"
+                        Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Ellipse.StrokeDashArray>
+                                <MultiBinding Converter="{StaticResource CircleStrokConverter}">
+                                    <Binding Path="Diameter" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="Thickness" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </Ellipse.StrokeDashArray>
+                            <Ellipse.RenderTransform>
+                                <RotateTransform x:Name="Rotation" Angle="0" />
+                            </Ellipse.RenderTransform>
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="Rotation"
+                                                Storyboard.TargetProperty="Angle"
+                                                SpeedRatio="0.5"
+                                                From="0"
+                                                To="360" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+                        </Ellipse>
+
+                        <!--Second circle-->
+                        <Ellipse
+                        Width="{Binding ElementName=firstCircle, Path=ActualWidth, Converter={StaticResource DiameterConverter}, ConverterParameter=2nd}"
+                        Height="{Binding ElementName=firstCircle, Path=ActualHeight, Converter={StaticResource DiameterConverter}, ConverterParameter=2nd}"
+                        RenderTransformOrigin="{Binding ElementName=firstCircle, Path=RenderTransformOrigin}"
+                        Stroke="{TemplateBinding Color}"
+                        StrokeDashCap="{TemplateBinding Cap}"
+                        StrokeThickness="{TemplateBinding Thickness, Converter={StaticResource ThicknessConverter}}"
+                        Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Ellipse.StrokeDashArray>
+                                <MultiBinding Converter="{StaticResource CircleStrokConverter}">
+                                    <Binding Path="Diameter" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="Thickness" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </Ellipse.StrokeDashArray>
+                            <Ellipse.RenderTransform>
+                                <RotateTransform x:Name="Rotation2" Angle="45" />
+                            </Ellipse.RenderTransform>
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="Rotation2"
+                                                Storyboard.TargetProperty="Angle"
+                                                SpeedRatio="0.5"
+                                                From="0"
+                                                To="360" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+                        </Ellipse>
+
+                        <!--3rd circle-->
+                        <Ellipse
+                        Width="{Binding ElementName=firstCircle, Path=ActualWidth, Converter={StaticResource DiameterConverter}, ConverterParameter=3rd}"
+                        Height="{Binding ElementName=firstCircle, Path=ActualHeight, Converter={StaticResource DiameterConverter}, ConverterParameter=3rd}"
+                        RenderTransformOrigin="{Binding ElementName=firstCircle, Path=RenderTransformOrigin}"
+                        Stroke="{TemplateBinding Color}"
+                        StrokeDashCap="{TemplateBinding Cap}"
+                        StrokeThickness="{TemplateBinding Thickness}"
+                        Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Ellipse.StrokeDashArray>
+                                <MultiBinding Converter="{StaticResource CircleStrokConverter}">
+                                    <Binding Path="Diameter" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="Thickness" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </Ellipse.StrokeDashArray>
+                            <Ellipse.RenderTransform>
+                                <RotateTransform x:Name="Rotation3" Angle="90" />
+                            </Ellipse.RenderTransform>
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="Rotation3"
+                                                Storyboard.TargetProperty="Angle"
+                                                SpeedRatio="0.5"
+                                                From="0"
+                                                To="360" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+                        </Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

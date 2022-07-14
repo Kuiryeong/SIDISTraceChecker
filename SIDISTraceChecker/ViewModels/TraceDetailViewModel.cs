@@ -12,12 +12,18 @@ using System.Windows.Input;
 
 namespace SIDISTraceChecker.ViewModels
 {
-    internal class TraceDetailViewModel : ViewModelBase
+    internal class TraceDetailViewModel : BaseViewModel
     {
+        #region Field
+
         private readonly NavigationStore _navigationStore;
 
         private readonly SelectedFileStore _selectedFileStore;
 
+        #endregion
+
+
+        #region Properties
 
         public string FileName
         {
@@ -28,24 +34,8 @@ namespace SIDISTraceChecker.ViewModels
 
         public TraceFileViewModel BackupModel { get => _selectedFileStore._traceFileViewModel; }
 
-        private int selectedTimeIndex;
-        public int SelectedTimeIndex
-        {
-            get
-            {
-                return selectedTimeIndex;
-            }
-            set
-            {
-                selectedTimeIndex = value;
-                OnPropertyChanged(nameof(SelectedTimeIndex));
-
-                if (TraceDetailModels.Count > 0 && selectedTimeIndex >= 0)
-                    SelectedDetalString = TraceDetailModels.Select(s => s.FullMessages).ElementAt<string>(selectedTimeIndex);
-            }
-        }
-
         public TraceFileListItemModel SelectedListItemFile { get => _selectedFileStore.SelectedTraceFileModel.TraceFileModel; }
+
         public ObservableCollection<string> Initimes
         {
             get => new ObservableCollection<string>(TraceDetailModels.Select(s => s.IniTime).AsEnumerable<string>());
@@ -78,10 +68,30 @@ namespace SIDISTraceChecker.ViewModels
             }
         }
 
+        private int selectedTimeIndex;
+        public int SelectedTimeIndex
+        {
+            get
+            {
+                return selectedTimeIndex;
+            }
+            set
+            {
+                selectedTimeIndex = value;
+                OnPropertyChanged(nameof(SelectedTimeIndex));
+
+                if (TraceDetailModels.Count > 0 && selectedTimeIndex >= 0)
+                    SelectedDetalString = TraceDetailModels.Select(s => s.FullMessages).ElementAt<string>(selectedTimeIndex);
+            }
+        }
 
         public ICommand BackToSelectFileCommand { get; }
         public ICommand OpenFileCommand { get; }
 
+        #endregion
+
+
+        #region Constructor
 
         public TraceDetailViewModel(NavigationStore navigationStore, SelectedFileStore selectedFileStore)
         {
@@ -100,13 +110,18 @@ namespace SIDISTraceChecker.ViewModels
             SelectedTimeIndex = 0;
         }
 
+        #endregion
+
+
+        #region HelpFuctions
+
         private void BackToSelectFile()
         {
             DialogResult res = MessageBox.Show("Do you want restore previous page?", "Restore Page", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (res == DialogResult.No)
             {
-                new BackToSelectFileCommand(this, _navigationStore).Execute(null);
+                new BackToSelectFileCommand(_navigationStore).Execute(null);
             }
             else
             {
@@ -144,7 +159,7 @@ namespace SIDISTraceChecker.ViewModels
                         stringSet = new string(stringSet.Skip(2).ToArray());
                     }
 
-                    if (stringSet.Substring(0,1) == "\r") iniTime = DateTime.ParseExact(stringSet.Substring(2, 21), "yy-MM-dd HH:mm:ss,fff", null);
+                    if (stringSet.Substring(0, 1) == "\r") iniTime = DateTime.ParseExact(stringSet.Substring(2, 21), "yy-MM-dd HH:mm:ss,fff", null);
                     else iniTime = DateTime.ParseExact(stringSet.Substring(0, 21), "yy-MM-dd HH:mm:ss,fff", null);
 
                     if (_selectedFileStore.TimeStampFilter)
@@ -190,5 +205,7 @@ namespace SIDISTraceChecker.ViewModels
 
             }
         }
+
+        #endregion
     }
 }

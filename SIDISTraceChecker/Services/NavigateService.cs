@@ -4,7 +4,7 @@ using System;
 
 namespace SIDISTraceChecker.Services
 {
-    internal class NavigateService<TViewModel> where TViewModel : ViewModelBase
+    internal class NavigateService<TViewModel> where TViewModel : BaseViewModel
     {
         private readonly NavigationStore _navigationStore;
 

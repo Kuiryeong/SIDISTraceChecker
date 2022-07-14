@@ -7,9 +7,9 @@ namespace SIDISTraceChecker.Stores
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private ViewModelBase _currentViewModel;
+        private BaseViewModel _currentViewModel;
 
-        public ViewModelBase CurrentViewModel
+        public BaseViewModel CurrentViewModel
         {
             get
             {

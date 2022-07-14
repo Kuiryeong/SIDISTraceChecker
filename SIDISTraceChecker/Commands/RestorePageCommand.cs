@@ -1,15 +1,10 @@
 ﻿using SIDISTraceChecker.Services;
 using SIDISTraceChecker.Stores;
 using SIDISTraceChecker.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIDISTraceChecker.Commands
 {
-    internal class RestorePageCommand : CommandBase
+    internal class RestorePageCommand : BaseCommand
     {
         private readonly TraceDetailViewModel _traceDetailViewModel;
 

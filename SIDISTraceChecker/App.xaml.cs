@@ -12,22 +12,11 @@ namespace SIDISTraceChecker
     /// </summary>
     public partial class App : Application
     {
-        private readonly NavigationStore _navigationStore;
-
-        public App()
-        {
-            _navigationStore = new NavigationStore();
-        }
-
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = new TraceFileViewModel(_navigationStore);
-
-            
-
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_navigationStore)
+                DataContext = new MainViewModel()
             };
             MainWindow.Show();
 

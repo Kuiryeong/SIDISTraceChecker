@@ -2,7 +2,7 @@
 
 namespace SIDISTraceChecker.ViewModels
 {
-    internal class TraceFileListItemViewModel : ViewModelBase
+    internal class TraceFileListItemViewModel : BaseViewModel
     {
         private TraceFileListItemModel? _traceFileModel;
         public TraceFileListItemModel TraceFileModel

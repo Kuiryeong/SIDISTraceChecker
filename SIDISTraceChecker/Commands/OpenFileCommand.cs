@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace SIDISTraceChecker.Commands
 {
-    internal class OpenFileCommand : CommandBase
+    internal class OpenFileCommand : BaseCommand
     {
         private readonly TraceDetailViewModel _traceDetailViewModel;
 

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SIDISTraceChecker.Views"
              xmlns:custom="clr-namespace:SIDISTraceChecker.Controls"
              mc:Ignorable="d"
              Background="AliceBlue"
@@ -11,20 +10,36 @@
              d:DesignHeight="720" d:DesignWidth="1280">
 
     <Border Margin="10">
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="{Binding FileName}" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Command="{Binding BackToSelectFileCommand}" Style="{DynamicResource btn-info}" Content="Back to Select file"/>
-                    <Button Command="{Binding OpenFileCommand}" Style="{DynamicResource btn-warning}" Content="Open file on Notepad++" Margin="10,0,10,0"/>
+                
+                <!--File name-->
+                <TextBlock Grid.Column="0" 
+                           Text="{Binding FileName}" 
+                           VerticalAlignment="Center" 
+                           TextWrapping="Wrap"/>
+                
+                <!--Buttons-->
+                <StackPanel Grid.Column="1" 
+                            Orientation="Horizontal" 
+                            HorizontalAlignment="Right">
+                    <Button Command="{Binding BackToSelectFileCommand}" 
+                            Style="{DynamicResource btn-info}" 
+                            Content="Back to Select file"/>
+                    <Button Command="{Binding OpenFileCommand}" 
+                            Style="{DynamicResource btn-warning}" 
+                            Content="Open file on Notepad++" 
+                            Margin="10,0,10,0"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Margin="0,10">
@@ -36,9 +51,26 @@
                     <ColumnDefinition Width="220"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Logging Time" Margin="0,10" TextAlignment="Center"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="Log Stings" Margin="0,10"  TextAlignment="Center"/>
-                <ListView Background="LightGray" Grid.Row="1" Grid.Column="0" Margin="0,0,5,0" ItemsSource="{Binding Initimes}" SelectedIndex="{Binding SelectedTimeIndex}">
+                
+                <!--Column header for listview-->
+                <TextBlock Grid.Row="0" 
+                           Grid.Column="0" 
+                           Text="Logging Time" 
+                           Margin="0,10" 
+                           TextAlignment="Center"/>
+                <TextBlock Grid.Row="0" 
+                           Grid.Column="1" 
+                           Text="Log Stings" 
+                           Margin="0,10"  
+                           TextAlignment="Center"/>
+                
+                <!--Loggingtime listview-->
+                <ListView Background="LightGray" 
+                          Grid.Row="1" 
+                          Grid.Column="0" 
+                          Margin="0,0,5,0" 
+                          ItemsSource="{Binding Initimes}" 
+                          SelectedIndex="{Binding SelectedTimeIndex}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -47,7 +79,14 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
-                <ScrollViewer Grid.Row="1" Grid.Column="1" Padding="10" Background="LightGray" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                
+                <!--Log string scrollviewer-->
+                <ScrollViewer Grid.Row="1" 
+                              Grid.Column="1" 
+                              Padding="10" 
+                              Background="LightGray" 
+                              HorizontalScrollBarVisibility="Auto" 
+                              VerticalScrollBarVisibility="Auto">
                     <custom:CustomTextBlock
                                 HighlightText="{Binding HighlightText}"
                                 Text="{Binding SelectedDetalString}">

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace SIDISTraceChecker.ViewModels
 {
-    internal class TraceFileViewModel : ViewModelBase
+    internal class TraceFileViewModel : BaseViewModel
     {
         private readonly NavigationStore _navigationStore;
 
@@ -228,7 +228,7 @@ namespace SIDISTraceChecker.ViewModels
                 }
             }
 
-            new GoToDetailCommand(this, _navigationStore,
+            new GoToDetailCommand(_navigationStore,
                 new SelectedFileStore(this)
                 {
                     FilePath = this.FilePath,

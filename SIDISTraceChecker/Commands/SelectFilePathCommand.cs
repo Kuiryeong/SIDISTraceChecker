@@ -1,13 +1,12 @@
 ﻿using SIDISTraceChecker.Models;
 using SIDISTraceChecker.ViewModels;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SIDISTraceChecker.Commands
 {
-    internal class SelectFilePathCommand : CommandBase
+    internal class SelectFilePathCommand : BaseCommand
     {
         private string _filePath;
 

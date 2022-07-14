@@ -2,7 +2,7 @@
 
 namespace SIDISTraceChecker.Commands
 {
-    public class Command : CommandBase
+    public class Command : BaseCommand
     {
         bool _execualbe;
         Action _action;
@@ -13,7 +13,7 @@ namespace SIDISTraceChecker.Commands
             _execualbe = execuable;
         }
 
-        public bool CanExecute(object parameter)
+        public override bool CanExecute(object parameter)
         {
             return _execualbe;
         }

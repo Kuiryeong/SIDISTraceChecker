@@ -8,13 +8,13 @@ namespace SIDISTraceChecker.Models
         /// <summary>
         /// The folder name.
         /// </summary>
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
         /// <summary>
         /// The last modifided timestamp of files in this folder.
         /// </summary>
         public DateTime LastModifiedTime
         {
-            get => Directory.GetLastWriteTime(FileName);
+            get => string.IsNullOrEmpty(FileName) ? DateTime.Now : Directory.GetLastWriteTime(FileName);
         }
         /// <summary>
         /// The earliest timestamp of files in this folder.
@@ -23,6 +23,8 @@ namespace SIDISTraceChecker.Models
         {
             get
             {
+                if (FileName is null) return "";
+
                 try
                 {
                     using (StreamReader sr = new StreamReader(FileName))

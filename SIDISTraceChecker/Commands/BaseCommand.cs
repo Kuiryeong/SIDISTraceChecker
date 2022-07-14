@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace SIDISTraceChecker.Commands
 {
-    public abstract class CommandBase : ICommand
+    public abstract class BaseCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

@@ -4,16 +4,12 @@ using SIDISTraceChecker.ViewModels;
 
 namespace SIDISTraceChecker.Commands
 {
-    internal class GoToDetailCommand : CommandBase
+    internal class GoToDetailCommand : BaseCommand
     {
-        private readonly TraceFileViewModel _traceFileViewModel;
-
         private readonly NavigateService<TraceDetailViewModel> _navigateService;
 
-        public GoToDetailCommand(TraceFileViewModel traceFileViewModel, NavigationStore navigationStore, SelectedFileStore selectedFileStore)
+        public GoToDetailCommand(NavigationStore navigationStore, SelectedFileStore selectedFileStore)
         {
-            _traceFileViewModel = traceFileViewModel;
-
             _navigateService = new NavigateService<TraceDetailViewModel>(navigationStore, () => new TraceDetailViewModel(navigationStore, selectedFileStore));
         }
 

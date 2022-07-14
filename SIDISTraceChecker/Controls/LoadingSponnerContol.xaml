@@ -15,17 +15,21 @@
                     </ControlTemplate.Resources>
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                         
-                        <TextBlock Foreground="DarkSlateBlue" Text="Loading..." VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <!--need flexible font size-->
+                        <TextBlock Foreground="DarkSlateBlue" 
+                                   Text="Loading..." 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
                         
                         <!--First circle-->
                         <Ellipse x:Name="firstCircle"
-                        Width="{TemplateBinding Diameter}"
-                        Height="{TemplateBinding Diameter}"
-                        RenderTransformOrigin="0.5 0.5"
-                        Stroke="{TemplateBinding Color}"
-                        StrokeDashCap="{TemplateBinding Cap}"
-                        StrokeThickness="{TemplateBinding Thickness}"
-                        Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                 Width="{TemplateBinding Diameter}"
+                                 Height="{TemplateBinding Diameter}"
+                                 RenderTransformOrigin="0.5 0.5"
+                                 Stroke="{TemplateBinding Color}"
+                                 StrokeDashCap="{TemplateBinding Cap}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
+                                 Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Ellipse.StrokeDashArray>
                                 <MultiBinding Converter="{StaticResource CircleStrokConverter}">
                                     <Binding Path="Diameter" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -39,12 +43,11 @@
                                 <EventTrigger RoutedEvent="Loaded">
                                     <BeginStoryboard>
                                         <Storyboard RepeatBehavior="Forever">
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Rotation"
-                                                Storyboard.TargetProperty="Angle"
-                                                SpeedRatio="0.5"
-                                                From="0"
-                                                To="360" />
+                                            <DoubleAnimation Storyboard.TargetName="Rotation"
+                                                             Storyboard.TargetProperty="Angle"
+                                                             SpeedRatio="0.5"
+                                                             From="0"
+                                                             To="360" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
@@ -52,14 +55,13 @@
                         </Ellipse>
 
                         <!--Second circle-->
-                        <Ellipse
-                        Width="{Binding ElementName=firstCircle, Path=ActualWidth, Converter={StaticResource DiameterConverter}, ConverterParameter=2nd}"
-                        Height="{Binding ElementName=firstCircle, Path=ActualHeight, Converter={StaticResource DiameterConverter}, ConverterParameter=2nd}"
-                        RenderTransformOrigin="{Binding ElementName=firstCircle, Path=RenderTransformOrigin}"
-                        Stroke="{TemplateBinding Color}"
-                        StrokeDashCap="{TemplateBinding Cap}"
-                        StrokeThickness="{TemplateBinding Thickness, Converter={StaticResource ThicknessConverter}}"
-                        Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Ellipse Width="{Binding ElementName=firstCircle, Path=ActualWidth, Converter={StaticResource DiameterConverter}, ConverterParameter=2nd}"
+                                 Height="{Binding ElementName=firstCircle, Path=ActualHeight, Converter={StaticResource DiameterConverter}, ConverterParameter=2nd}"
+                                 RenderTransformOrigin="{Binding ElementName=firstCircle, Path=RenderTransformOrigin}"
+                                 Stroke="{TemplateBinding Color}"
+                                 StrokeDashCap="{TemplateBinding Cap}"
+                                 StrokeThickness="{TemplateBinding Thickness, Converter={StaticResource ThicknessConverter}}"
+                                 Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Ellipse.StrokeDashArray>
                                 <MultiBinding Converter="{StaticResource CircleStrokConverter}">
                                     <Binding Path="Diameter" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -73,12 +75,11 @@
                                 <EventTrigger RoutedEvent="Loaded">
                                     <BeginStoryboard>
                                         <Storyboard RepeatBehavior="Forever">
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Rotation2"
-                                                Storyboard.TargetProperty="Angle"
-                                                SpeedRatio="0.5"
-                                                From="0"
-                                                To="360" />
+                                            <DoubleAnimation Storyboard.TargetName="Rotation2" 
+                                                             Storyboard.TargetProperty="Angle"
+                                                             SpeedRatio="0.5"
+                                                             From="0"
+                                                             To="360" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
@@ -86,14 +87,13 @@
                         </Ellipse>
 
                         <!--3rd circle-->
-                        <Ellipse
-                        Width="{Binding ElementName=firstCircle, Path=ActualWidth, Converter={StaticResource DiameterConverter}, ConverterParameter=3rd}"
-                        Height="{Binding ElementName=firstCircle, Path=ActualHeight, Converter={StaticResource DiameterConverter}, ConverterParameter=3rd}"
-                        RenderTransformOrigin="{Binding ElementName=firstCircle, Path=RenderTransformOrigin}"
-                        Stroke="{TemplateBinding Color}"
-                        StrokeDashCap="{TemplateBinding Cap}"
-                        StrokeThickness="{TemplateBinding Thickness}"
-                        Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Ellipse Width="{Binding ElementName=firstCircle, Path=ActualWidth, Converter={StaticResource DiameterConverter}, ConverterParameter=3rd}"
+                                 Height="{Binding ElementName=firstCircle, Path=ActualHeight, Converter={StaticResource DiameterConverter}, ConverterParameter=3rd}"
+                                 RenderTransformOrigin="{Binding ElementName=firstCircle, Path=RenderTransformOrigin}"
+                                 Stroke="{TemplateBinding Color}"
+                                 StrokeDashCap="{TemplateBinding Cap}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
+                                 Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Ellipse.StrokeDashArray>
                                 <MultiBinding Converter="{StaticResource CircleStrokConverter}">
                                     <Binding Path="Diameter" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -107,12 +107,11 @@
                                 <EventTrigger RoutedEvent="Loaded">
                                     <BeginStoryboard>
                                         <Storyboard RepeatBehavior="Forever">
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Rotation3"
-                                                Storyboard.TargetProperty="Angle"
-                                                SpeedRatio="0.5"
-                                                From="0"
-                                                To="360" />
+                                            <DoubleAnimation Storyboard.TargetName="Rotation3"
+                                                             Storyboard.TargetProperty="Angle"
+                                                             SpeedRatio="0.5"
+                                                             From="0"
+                                                             To="360" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>

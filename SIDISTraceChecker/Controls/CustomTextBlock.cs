@@ -27,7 +27,7 @@ namespace SIDISTraceChecker.Controls
 
         public string Text
         {
-            get { return (string)GetValue(TextProperty); }
+            get => string.IsNullOrEmpty((string)GetValue(TextProperty)) ? "" : (string)GetValue(TextProperty);
             set { SetValue(TextProperty, value); }
         }
 

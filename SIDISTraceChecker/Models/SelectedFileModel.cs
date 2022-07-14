@@ -14,6 +14,7 @@ namespace SIDISTraceChecker.Models
         public string IncludedString { get; set; }
         public string RegexString { get; set; }
 
+
         private TraceFileListItemViewModel traceFileModel;
         public TraceFileListItemViewModel TraceFileModel
         {
@@ -27,6 +28,7 @@ namespace SIDISTraceChecker.Models
                 SelectedTraceFileUpdated?.Invoke();
             }
         }
+
 
         public event Action SelectedTraceFileUpdated;
     }
